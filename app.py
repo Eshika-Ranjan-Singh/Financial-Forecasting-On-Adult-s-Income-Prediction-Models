@@ -6,7 +6,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load model
-model = joblib.load('ADA.joblib')
+model = joblib.load('adaboost_model.joblib')
 
 @app.route('/')
 def home():
