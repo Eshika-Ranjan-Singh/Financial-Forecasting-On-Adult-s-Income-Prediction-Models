@@ -1,56 +1,62 @@
+from flask import Flask, render_template, request, redirect, url_for
+import joblib
 import numpy as np
 import pandas as pd
-import joblib
-from flask import Flask, request, render_template
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Load model
-try:
-    model = joblib.load('ADA.joblib')
-except Exception as e:
-    print(f"Error loading model: {e}")
+model = joblib.load('ADA.joblib')
 
-# Routes
 @app.route('/')
 def home():
     return render_template('index.html')
+
+@app.route('/why')
+def why():
+    return render_template('why.html')
 
 @app.route('/predict')
 def predict():
     return render_template('predict.html')
 
-@app.route('/submit', methods=["POST"])
+@app.route('/investments')
+def investments():
+    return render_template('investments.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/submit', methods=['POST'])
 def submit():
     try:
-        # Get user input
-        input_feature = [x for x in request.form.values()]
-        input_feature = [np.array(input_feature)]
+        # Get form data
+        features = [x for x in request.form.values()]
         
-        # Define column names (ensure these match your model's features)
-        names = ['age', 'workclass', 'education', 'occupation', 'relationship', 
-                 'race', 'sex', 'hours_per_week', 'mental_status', 
-                 'native_country', 'capital_gain', 'capital_loss']
+        # Create DataFrame with correct column names
+        columns = ['age', 'workclass', 'education', 'marital-status', 'occupation',
+                  'relationship', 'race', 'sex', 'capital-gain', 'capital-loss',
+                  'hours-per-week', 'native-country']
         
-        # Create DataFrame
-        data = pd.DataFrame([input_feature], columns=names)
+        data = pd.DataFrame([features], columns=columns)
         
-        # Predict
+        # Make prediction
         prediction = model.predict(data)
         
         # Prepare result
         if prediction[0] == 0:
-            result = "You earn more than 50K. Ready for investment!"
-            pred_text = ">50K"
+            result = "Your earns more than 50,000. Yes, you are ready for investment. Invest wisely."
+            pred_value = ">50k"
         else:
-            result = "You earn less than 50K. Consider upskilling."
-            pred_text = "<=50K"
+            result = "Your earns less than 50,000. Better to invest your money to learn skills."
+            pred_value = "<=50k"
             
-        return render_template("result.html", result=result, prediction=pred_text)
+        return render_template('result.html', result=result, prediction=pred_value)
     
     except Exception as e:
         print(f"Error: {e}")
-        return render_template("result.html", result="Error: Invalid input.")
+        return render_template('result.html', result="An error occurred. Please try again.")
 
-if _name_ == "_main_":
+if __name__ == '__main__':
     app.run(debug=True, port=4000)
