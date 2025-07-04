@@ -10,3 +10,14 @@
     <a href="/"><button>Home</button></a>
 </body>
 </html>
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="result-container">
+    <h1>Prediction Results</h1>
+    <div class="result-value">{{ prediction }}</div>
+    <p>{{ result }}</p>
+    <a href="{{ url_for('investments') }}"><button>View Investment Options</button></a>
+</div>
+{% endblock %}

@@ -19,3 +19,33 @@
     </form>
 </body>
 </html>
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Predict Your Income</h1>
+    <p>Carefully fill all the fields and predict your income</p>
+    
+    <form action="{{ url_for('submit') }}" method="POST">
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" name="age" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="workclass">Work Class</label>
+            <select name="workclass" required>
+                <option value="">Choose Work Class</option>
+                <option value="Private">Private</option>
+                <option value="Government">Government</option>
+                <!-- Add more options -->
+            </select>
+        </div>
+        
+        <!-- Add all other fields similarly -->
+        
+        <button type="submit">Predict Income</button>
+    </form>
+</div>
+{% endblock %}

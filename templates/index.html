@@ -8,3 +8,13 @@
     <a href="/predict"><button>Predict Income</button></a>
 </body>
 </html>
+
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <h1>ADULT INCOME PREDICTION MODELS</h1>
+    <p>Predict Income • Plan for Future</p>
+    <a href="{{ url_for('predict') }}"><button>Get Started</button></a>
+</section>
+{% endblock %}
