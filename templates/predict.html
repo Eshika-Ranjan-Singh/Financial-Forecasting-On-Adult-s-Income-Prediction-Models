@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predict Income</title>
+</head>
+<body>
+    <h1>Enter Your Details</h1>
+    <form action="/submit" method="POST">
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br>
+
+        <label for="workclass">Workclass:</label>
+        <input type="text" name="workclass" required><br>
+
+        <!-- Add all 12 fields from your model -->
+        <!-- Example: education, occupation, etc. -->
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
