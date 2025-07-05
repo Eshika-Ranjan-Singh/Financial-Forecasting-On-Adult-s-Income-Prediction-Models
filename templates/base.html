@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Forecasting</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav>
         <div class="logo">FINANCIAL FORECASTING</div>
         <ul>
-            <li><a href="{{ url_for('home') }}">HOME</a></li>
-            <li><a href="/whyprediction">WHY PREDICTION</a></li>
-            <li><a href="{{ url_for('predict') }}">PREDICT</a></li>
-            <li><a href="{{ url_for('investments') }}">INVESTMENTS</a></li>
-            <li><a href="{{ url_for('contact') }}">CONTACT</a></li>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="whyprediction.html">WHY PREDICTION</a></li>
+            <li><a href="predict.html">PREDICT</a></li>
+            <li><a href="investments.html">INVESTMENTS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
         </ul>
     </nav>
     {% block content %}{% endblock %}
