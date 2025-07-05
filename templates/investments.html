@@ -1,0 +1,259 @@
+{% block content %}
+<style>
+    /* Investments Page Styles */
+    .investments-hero {
+        background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), 
+                    url('../static/images/investment-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 5rem 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .investments-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .investments-hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .investment-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem 4rem;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: #2c3e50;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-title p {
+        color: #7f8c8d;
+        font-size: 1.1rem;
+    }
+
+    .investment-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+
+    .investment-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .investment-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #ecf0f1;
+    }
+
+    .card-header h3 {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-category {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-features {
+        margin-bottom: 1.5rem;
+    }
+
+    .card-features li {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .card-features li::before {
+        content: "✓";
+        color: #27ae60;
+        margin-right: 0.5rem;
+        font-weight: bold;
+    }
+
+    .card-footer {
+        padding: 1.5rem;
+        background: #f8f9fa;
+        text-align: center;
+    }
+
+    .risk-indicator {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .risk-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin: 0 3px;
+    }
+
+    .risk-low .risk-dot:nth-child(-n+3) {
+        background: #27ae60;
+    }
+
+    .risk-medium .risk-dot:nth-child(-n+4) {
+        background: #f39c12;
+    }
+
+    .risk-high .risk-dot:nth-child(-n+5) {
+        background: #e74c3c;
+    }
+
+    .btn-invest {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background: #3498db;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-invest:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .investment-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .investments-hero h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="investments-hero">
+    <div class="container">
+        <h1>Smart Investment Options</h1>
+        <p>Explore tailored investment strategies based on your income prediction to maximize your financial growth</p>
+    </div>
+</section>
+
+<!-- Investments Section -->
+<section class="investment-section">
+    <div class="section-title">
+        <h2>Recommended Investment Plans</h2>
+        <p>Choose the option that best fits your financial goals and risk tolerance</p>
+    </div>
+
+    <div class="investment-grid">
+        <!-- Conservative Option -->
+        <div class="investment-card">
+            <div class="card-header">
+                <h3>Conservative Portfolio</h3>
+                <span class="card-category">Low Risk</span>
+            </div>
+            <div class="card-body">
+                <ul class="card-features">
+                    <li>60% Bonds, 30% Stocks, 10% Cash</li>
+                    <li>Average annual return: 4-6%</li>
+                    <li>Best for short-term goals</li>
+                    <li>Capital preservation focus</li>
+                </ul>
+                <div class="risk-indicator risk-low">
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn-invest">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Balanced Option -->
+        <div class="investment-card">
+            <div class="card-header">
+                <h3>Balanced Portfolio</h3>
+                <span class="card-category">Moderate Risk</span>
+            </div>
+            <div class="card-body">
+                <ul class="card-features">
+                    <li>50% Stocks, 40% Bonds, 10% Alternatives</li>
+                    <li>Average annual return: 6-8%</li>
+                    <li>Best for 5-10 year goals</li>
+                    <li>Growth and income balance</li>
+                </ul>
+                <div class="risk-indicator risk-medium">
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn-invest">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Growth Option -->
+        <div class="investment-card">
+            <div class="card-header">
+                <h3>Growth Portfolio</h3>
+                <span class="card-category">High Risk</span>
+            </div>
+            <div class="card-body">
+                <ul class="card-features">
+                    <li>80% Stocks, 15% Alternatives, 5% Bonds</li>
+                    <li>Average annual return: 8-10%</li>
+                    <li>Best for long-term growth</li>
+                    <li>Capital appreciation focus</li>
+                </ul>
+                <div class="risk-indicator risk-high">
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                    <div class="risk-dot"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn-invest">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
